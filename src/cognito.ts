@@ -1,13 +1,9 @@
-import { CognitoIdentityProviderClient, GetUserCommand, ListUsersCommand } from "@aws-sdk/client-cognito-identity-provider";
+import { CognitoIdentityProviderClient, ListUsersCommand } from "@aws-sdk/client-cognito-identity-provider";
 
 class Cognito {
   private client: CognitoIdentityProviderClient;
   constructor() {
     this.client = new CognitoIdentityProviderClient();
-  }
-
-  async getUser(accessToken: string) {
-    return await this.client.send(new GetUserCommand({ AccessToken: accessToken }));
   }
 
   async listUsers(paginationToken?: string) {
